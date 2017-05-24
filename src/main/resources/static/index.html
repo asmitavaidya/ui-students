@@ -18,9 +18,7 @@
     	<li ng-repeat="student in students">
             <span>{{student.name}}</span> - <span>{{student.course}}</span>
         </li>
-    </div>
- 
-    <div ng-controller="insertStudentController">
+
     	<form ng-submit="insertStudent()">
     	Name: <input type="text" name="name" ng-model="name"><br>
     	Course: <input type="text" name="course" ng-model="course"><br>
