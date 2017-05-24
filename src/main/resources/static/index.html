@@ -7,18 +7,14 @@
   </head>
   <body>
     <h2>Students</h2>
-    <p>
-    	<div>
-    		List
-    		Insert
-    		Update
-    	</div>
-    </p>
-    <div ng-controller="studentsController">
+
+    <div ng-controller="studentsController" ng-init="getStudents()">
     	<li ng-repeat="student in students">
             <span>{{student.name}}</span> - <span>{{student.course}}</span>
         </li>
 
+		<br />
+		
     	<form ng-submit="insertStudent()">
     	Name: <input type="text" name="name" ng-model="name"><br>
     	Course: <input type="text" name="course" ng-model="course"><br>
