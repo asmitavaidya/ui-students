@@ -4,7 +4,7 @@ app.controller('studentsController', function($scope, $http) {
 
 	$scope.getStudents = function() {
 		
-		$http({method: 'GET', url: 'http://localhost:8081/students'})
+		$http({method: 'GET', url: 'http://54.245.63.109:8080/students'})
 		.then(
 			function(response) {
 				$scope.students = response.data;
@@ -17,7 +17,7 @@ app.controller('studentsController', function($scope, $http) {
 	
 	$scope.insertStudent = function() {
 		var dataToInsert = {name : $scope.name, course : $scope.course};
-		$http({method: 'POST', url: 'http://localhost:8081/students', data: dataToInsert})
+		$http({method: 'POST', url: 'http://54.245.63.109:8080/students', data: dataToInsert})
 			.then(
 				function(data, status, headers, config) {
 					$scope.message = data;
