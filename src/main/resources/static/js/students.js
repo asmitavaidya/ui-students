@@ -20,7 +20,6 @@ app.controller('studentsController', function($scope, $http) {
 		$http({method: 'POST', url: 'http://54.245.63.109:8080/students', data: dataToInsert})
 			.then(
 				function(data, status, headers, config) {
-					$scope.message = data;
 					$scope.getStudents();
 				},
 				function(data, status, headers, config) {

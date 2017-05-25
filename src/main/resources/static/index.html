@@ -4,11 +4,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
   	<script src="js/students.js"></script>
+  	<link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <h2>Students</h2>
+    <h2 class="headerContent">Students</h2>
 
-    <div ng-controller="studentsController" ng-init="getStudents()">
+    <div class="studentContent" ng-controller="studentsController" ng-init="getStudents()">
     	<li ng-repeat="student in students">
             <span>{{student.name}}</span> - <span>{{student.course}}</span>
         </li>
