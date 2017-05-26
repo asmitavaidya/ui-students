@@ -10,17 +10,22 @@
     <h2 class="headerContent">Students</h2>
 
     <div class="studentContent" ng-controller="studentsController" ng-init="getStudents()">
-    	<li ng-repeat="student in students">
-            <span>{{student.name}}</span> - <span>{{student.course}}</span>
-        </li>
-
-		<br />
-		
-    	<form ng-submit="insertStudent()">
-    	Name: <input type="text" name="name" ng-model="name"><br>
-    	Course: <input type="text" name="course" ng-model="course"><br>
-    	<input type="submit" value="Insert">
+    	<form class="form-inline" ng-submit="insertStudent()">
+    	<input placeholder="Name" type="text" name="name" ng-model="name">
+    	<input placeholder="Course" type="text" name="course" ng-model="course">
+    	<input class="btn btn-primary" type="submit" value="Insert">
     	</form>
+    	
+    	<table class="table">
+    		<tr>
+    			<th>Name</th><th>Major</th><th></th>
+    		</tr>
+    		<tr ng-repeat="student in students">
+    			<td>{{student.name}}</td><td>{{student.course}}</td><td><button type="button" ng-click="deleteStudent(student.id)" class="btn btn-danger btn-xs">Delete</button></td>
+    		</tr>
+    	</table>
+
+	
     </div>
 
   </body>

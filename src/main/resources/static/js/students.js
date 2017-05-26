@@ -19,7 +19,7 @@ app.controller('studentsController', function($scope, $http) {
 		var dataToInsert = {name : $scope.name, course : $scope.course};
 		$http({method: 'POST', url: 'http://54.245.63.109:8080/students', data: dataToInsert})
 			.then(
-				function(data, status, headers, config) {
+				function() {
 					$scope.getStudents();
 				},
 				function(data, status, headers, config) {
@@ -29,6 +29,19 @@ app.controller('studentsController', function($scope, $http) {
 			);		
 		$scope.name='';
 		$scope.course='';
+	}
+	
+	$scope.deleteStudent = function(id) {
+		$http({method: 'DELETE', url: 'http://54.245.63.109:8080/students/'+id})
+			.then(
+				function() {
+						$scope.getStudents();
+					},
+					function(data, status, headers, config) {
+						alert( "failure message: " + JSON.stringify({data: data}));
+					}
+					
+			);
 	}
 
 });
