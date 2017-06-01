@@ -9,19 +9,37 @@
   <body>
     <h2 class="headerContent">Students</h2>
 
-    <div class="studentContent" ng-controller="studentsController" ng-init="getStudents()">
-    	<form class="form-inline" ng-submit="insertStudent()">
+    <div class="studentContent" ng-controller="studentsController" ng-init="init()">
+    	<form class="form-inline" ng-show="!editMode" ng-submit="insertStudent()">
     	<input placeholder="Name" type="text" name="name" ng-model="name">
     	<input placeholder="Course" type="text" name="course" ng-model="course">
     	<input class="btn btn-primary" type="submit" value="Insert">
+    	<br>
+    	<span ng-show="invalidInput"><mark>Name and Course should be filled!</mark></span>
+    	</form>
+    	
+    	<form class="form-inline" ng-show="editMode" ng-submit="updateStudent()">
+    	<input type="hidden" ng-model="id">
+    	<input placeholder="Name" type="text" ng-model="name">
+    	<input placeholder="Course" type="text" ng-model="course">
+    	<input class="btn btn-warning" type="submit" value="Update">
+    	<input class="btn btn-success" ng-click="cancelEdit()" type="button" value="Cancel">
+    	<br>
+    	<span ng-show="invalidInput"><mark>Name and Course should be filled!</mark></span>
     	</form>
     	
     	<table class="table">
     		<tr>
-    			<th>Name</th><th>Major</th><th></th>
+    			<th>Name</th>
+    			<th>Major</th>
+    			<th></th>
+    			<th></th>
     		</tr>
     		<tr ng-repeat="student in students">
-    			<td>{{student.name}}</td><td>{{student.course}}</td><td><button type="button" ng-click="deleteStudent(student.id)" class="btn btn-danger btn-xs">Delete</button></td>
+    			<td>{{student.name}}</td>
+    			<td>{{student.course}}</td>
+    			<td><button type="button" name="edit" ng-click="editStudent(student.id, student.name, student.course)" class="btn btn-primary btn-xs">Edit</button></td>
+    			<td><button type="button" name="delete" ng-click="deleteStudent(student.id)" class="btn btn-danger btn-xs">Delete</button></td>
     		</tr>
     	</table>
 
